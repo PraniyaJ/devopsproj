@@ -1,0 +1,15 @@
+DevOps steps
+
+
+
+
+Docker Installation	
+Dockerize a React App	
+Use of Docker Compose	
+Dockerizing a MERN Stack Web Application (Optional)	
+Dockerize your Project with login  functionality	
+Install Java on WSL	
+Install Jenkins on Linux (WSL)	
+Install Teraform on WSL	Install AWS CLI on WSL	
+Building a Docker image from a Github repository	
+Build and push your first image (CLI)
