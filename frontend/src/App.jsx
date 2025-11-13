@@ -7,6 +7,7 @@ import Signup from './components/Signup/Signup';
 import Dashboard from './components/Dashboard/Dashboard';
 import AddPatient from './components/AddPatient/AddPatient';
 import './App.css';
+import Patients from './components/Patients/Patients';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-patient" element={<AddPatient />} />
-          <Route path="/patients" element={<AddPatient />} />
+          <Route path="/patients" element={<Patients />} />
         </Routes>
       </div>
     </Router>
