@@ -116,6 +116,18 @@ const Dashboard = () => {
               {menuItems.map((item, index) => (
                 <button
                   key={index}
+                  onClick={() => {
+                    if (item.label === 'Patients') navigate('/patients');
+                    if (item.label === 'Dashboard') navigate('/dashboard');
+                    if (item.label === 'Doctors') navigate('/doctors');
+                    if (item.label === 'Appointments') navigate('/appointments');
+                    if (item.label === 'Departments') navigate('/departments');
+                    if (item.label === 'Pharmacy') navigate('/pharmacy');
+                    if (item.label === 'Laboratory') navigate('/laboratory');
+                    if (item.label === 'Billing') navigate('/billing');
+                    if (item.label === 'Reports') navigate('/reports');
+                    if (item.label === 'Settings') navigate('/settings');
+                  }}
                   className={`w-full flex items-center px-4 py-3 rounded-lg transition-all duration-300 ${
                     item.active 
                       ? 'bg-white/20 text-white border border-white/30' 
