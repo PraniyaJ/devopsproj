@@ -21,10 +21,12 @@ services:
       - mongo
     volumes:
       - ./backend:/app
+      - /app/node_modules
     networks:
       - myapp-network
     environment:
       - MONGODB_URI=mongodb://mongo:27017/helsedb
+    command: npm run dev
 
 
   frontend:
@@ -33,10 +35,15 @@ services:
     restart: unless-stopped
     ports:
       - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     depends_on:
       - backend
     stdin_open: true
     tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     networks:
       - myapp-network
 

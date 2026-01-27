@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const Login = () => {
   const [opacity, setOpacity] = useState(0);
@@ -71,7 +72,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 flex items-center justify-center px-4 font-poppins">
+    <div className="relative min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 flex items-center justify-center px-4 font-poppins">
+      <button
+        type="button"
+        aria-label="Go back"
+        onClick={() => navigate('/')}
+        className="absolute top-6 left-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white"
+      >
+        <ArrowLeft size={20} />
+      </button>
       <section 
         className={`relative max-w-md w-full bg-white/10 border-2 border-white/20 rounded-3xl backdrop-blur-2xl flex justify-center items-center p-8 md:p-12 transition-all duration-1000 shadow-2xl hover:shadow-3xl hover:shadow-black/40 ${opacity ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
