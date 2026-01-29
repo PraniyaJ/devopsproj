@@ -63,7 +63,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 flex items-center justify-center px-4 font-poppins">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#0f172a] via-[#12263f] to-[#0b1220] text-gray-100 flex items-center justify-center px-4 font-poppins">
       <button
         type="button"
         aria-label="Go back"

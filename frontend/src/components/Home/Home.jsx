@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import operation from '../../assets/operation.jpg';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -56,9 +57,9 @@ const Home = () => {
               <img
                 src={operation}
                 alt="Hospital staff and patient consultation"
-                className="w-full h-80 object-cover md:h-[420px] lg:h-[500px]"
+                className="w-full h-80 object-cover md:h-[420px] lg:h-[400px]"
               />
-              <div className="p-6 bg-gradient-to-t from-black/40 to-transparent text-gray-100">
+              <div className="p-6 pt-2 bg-gradient-to-t from-black/40 to-transparent text-gray-100">
                 <p className="text-sm">Comprehensive Care</p>
                 <h4 className="text-xl font-semibold mt-2">State-of-the-art facilities</h4>
                 <p className="text-sm text-gray-300 mt-2">Combining technology and compassion for better outcomes.</p>
@@ -66,14 +67,14 @@ const Home = () => {
             </div>
 
             <div className="-mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-white/4 p-4 rounded-xl mt-6 shadow backdrop-blur-sm border border-white/6">
+              {/* <div className="bg-white/4 p-4 rounded-xl mt-6 shadow backdrop-blur-sm border border-white/6">
                 <h5 className="font-semibold">Telemedicine</h5>
                 <p className="text-sm text-gray-300">Virtual consultations and remote monitoring.</p>
-              </div>
-              <div className="bg-white/4 p-4 rounded-xl mt-6 shadow backdrop-blur-sm border border-white/6">
+              </div> */}
+              {/* <div className="bg-white/4 p-4 rounded-xl mt-6 shadow backdrop-blur-sm border border-white/6">
                 <h5 className="font-semibold">Secure Records</h5>
                 <p className="text-sm text-gray-300">Encrypted patient data and easy access for clinicians.</p>
-              </div>
+              </div> */}
             </div>
           </aside>
         </section>
@@ -95,6 +96,7 @@ const Home = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };

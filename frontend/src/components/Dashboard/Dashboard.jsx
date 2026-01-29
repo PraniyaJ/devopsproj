@@ -58,8 +58,8 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 flex items-center justify-center">
-        <div className="text-white text-xl font-poppins">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#12263f] to-[#0b1220] text-gray-100 flex items-center justify-center">
+        <div className="text-gray-100 text-xl font-poppins">Loading...</div>
       </div>
     );
   }
@@ -78,7 +78,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 font-poppins">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#12263f] to-[#0b1220] text-gray-100 font-poppins">
       {/* Header - Same as before */}
       <nav className="bg-white/10 backdrop-blur-md border-b border-white/20 px-6 py-4 fixed top-0 w-full z-30">
         <div className="flex justify-between items-center">

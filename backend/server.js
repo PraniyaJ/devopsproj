@@ -180,3 +180,57 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Patient routes (basic create/list) - added so frontend can POST/GET patients
+const Patient = require('./src/models/Patient');
+
+// Create patient
+app.post('/api/patients', async (req, res) => {
+  try {
+    const data = req.body;
+    const patient = new Patient(data);
+    await patient.save();
+    res.status(201).json(patient);
+  } catch (err) {
+    console.error('Error creating patient:', err);
+    res.status(500).json({ message: 'Failed to create patient' });
+  }
+});
+
+// List patients
+app.get('/api/patients', async (req, res) => {
+  try {
+    const patients = await Patient.find().sort({ createdAt: -1 }).limit(100);
+    res.json(patients);
+  } catch (err) {
+    console.error('Error fetching patients:', err);
+    res.status(500).json({ message: 'Failed to fetch patients' });
+  }
+});
+
+// Update patient
+app.put('/api/patients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const update = req.body;
+    const updated = await Patient.findByIdAndUpdate(id, update, { new: true });
+    if (!updated) return res.status(404).json({ message: 'Patient not found' });
+    res.json(updated);
+  } catch (err) {
+    console.error('Error updating patient:', err);
+    res.status(500).json({ message: 'Failed to update patient' });
+  }
+});
+
+// Delete patient
+app.delete('/api/patients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const removed = await Patient.findByIdAndDelete(id);
+    if (!removed) return res.status(404).json({ message: 'Patient not found' });
+    res.json({ message: 'Patient deleted' });
+  } catch (err) {
+    console.error('Error deleting patient:', err);
+    res.status(500).json({ message: 'Failed to delete patient' });
+  }
+});
