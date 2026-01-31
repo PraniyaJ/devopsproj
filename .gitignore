@@ -24,3 +24,9 @@ Thumbs.db
 # Build outputs
 dist/
 build/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
