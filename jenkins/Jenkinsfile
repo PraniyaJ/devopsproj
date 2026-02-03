@@ -80,6 +80,7 @@ ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} << 'EOF'
         --network mern-net \\
         -p 5000:5000 \\
         -e MONGODB_URI="mongodb://mongo:27017/helsedb" \\
+        -e JWT_SECRET="supersecret-jwt-key" \\
         ${BACKEND_IMAGE}:${BUILD_TAG}
 
     # Run frontend
