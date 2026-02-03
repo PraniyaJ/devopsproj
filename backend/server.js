@@ -66,6 +66,15 @@ const authenticateToken = (req, res, next) => {
 
 // Routes
 
+// Root & health routes for simple checks
+app.get('/', (req, res) => {
+  res.send('Backend server is running. Try GET /api/test or /api/patients');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 // Signup Route
 app.post('/api/signup', async (req, res) => {
   try {
