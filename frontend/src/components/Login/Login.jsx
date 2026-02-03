@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
+// Use current host in browser (EC2 IP in production, localhost in dev)
+const API_BASE = (typeof window !== 'undefined' && window.location.hostname)
+  ? `http://${window.location.hostname}:5000`
+  : 'http://localhost:5000';
+
 const Login = () => {
   const [opacity, setOpacity] = useState(0);
   const [formData, setFormData] = useState({
@@ -44,7 +49,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/login', {
+      const response = await fetch(`${API_BASE}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
