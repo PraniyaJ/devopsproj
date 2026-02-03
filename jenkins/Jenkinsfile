@@ -6,7 +6,8 @@ pipeline {
         BACKEND_IMAGE  = "praniya/devopsproj-backend"
         BUILD_TAG      = "${BUILD_NUMBER}"
         EC2_USER       = "ubuntu"
-        EC2_IP         = "16.16.4.217"
+        // Replace with Terraform output `app_server_public_ip`
+        EC2_IP         = "16.16.187.204"
     }
 
     stages {

@@ -36,14 +36,6 @@ resource "aws_security_group" "mern_sg" {
   }
 
   ingress {
-    description = "Jenkins"
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
     description = "MongoDB (VPC only)"
     from_port   = 27017
     to_port     = 27017

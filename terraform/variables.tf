@@ -25,13 +25,7 @@ variable "ami_id" {
 variable "instance_type" {
   description = "EC2 instance type for app server"
   type        = string
-  default     = "t3.small"
-}
-
-variable "jenkins_instance_type" {
-  description = "EC2 instance type for Jenkins"
-  type        = string
-  default     = "t3.medium"
+  default     = "t3.micro"
 }
 
 variable "key_name" {
@@ -43,7 +37,7 @@ variable "key_name" {
 variable "public_key_path" {
   description = "Path to SSH public key"
   type        = string
-  default     = "~/.ssh/id_rsa.pub"
+  default     = "/mnt/c/Users/User/.ssh/id_rsa.pub"
 }
 
 variable "allowed_ssh_cidr" {
