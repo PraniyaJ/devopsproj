@@ -56,27 +56,27 @@ pipeline {
             steps {
                 sshagent(['ec2-ssh-key']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ubuntu@${EC2_IP} << EOF
-                        docker pull ${FRONTEND_IMAGE}:${BUILD_TAG}
-                        docker pull ${BACKEND_IMAGE}:${BUILD_TAG}
+ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} << 'EOF'
+    docker pull ${FRONTEND_IMAGE}:${BUILD_TAG}
+    docker pull ${BACKEND_IMAGE}:${BUILD_TAG}
 
-                        docker stop frontend backend || true
-                        docker rm frontend backend || true
+    docker stop frontend backend || true
+    docker rm frontend backend || true
 
-                        docker network create mern-net || true
+    docker network create mern-net || true
 
-                        docker run -d \\
-                          --name backend \\
-                          --network mern-net \\
-                          -p 5000:5000 \\
-                          ${BACKEND_IMAGE}:${BUILD_TAG}
+    docker run -d \\
+        --name backend \\
+        --network mern-net \\
+        -p 5000:5000 \\
+        ${BACKEND_IMAGE}:${BUILD_TAG}
 
-                        docker run -d \\
-                          --name frontend \\
-                          --network mern-net \\
-                          -p 80:5173 \\
-                          ${FRONTEND_IMAGE}:${BUILD_TAG}
-                    EOF
+    docker run -d \\
+        --name frontend \\
+        --network mern-net \\
+        -p 80:5173 \\
+        ${FRONTEND_IMAGE}:${BUILD_TAG}
+EOF
                     """
                 }
             }
