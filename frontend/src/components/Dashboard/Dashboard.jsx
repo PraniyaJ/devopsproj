@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Use current host in browser (EC2 IP in production, localhost in dev)
+const API_BASE = (typeof window !== 'undefined' && window.location.hostname)
+  ? `http://${window.location.hostname}:5000`
+  : 'http://localhost:5000';
+
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +37,7 @@ const Dashboard = () => {
 
   const verifyToken = async (token) => {
     try {
-      const response = await fetch('http://localhost:5000/api/dashboard', {
+      const response = await fetch(`${API_BASE}/api/dashboard`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
