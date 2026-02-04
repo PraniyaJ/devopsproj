@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+// Use current host for backend (port 5000 in both local and EC2)
+const API_BASE = (typeof window !== 'undefined' && window.location.hostname)
+  ? `http://${window.location.hostname}:5000`
+  : 'http://localhost:5000';
+
 const AddPatient = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -133,7 +138,7 @@ const AddPatient = () => {
       const token = localStorage.getItem('authToken');
       let res;
       if (isEditing && editingId) {
-        res = await fetch(`/api/patients/${editingId}`, {
+        res = await fetch(`${API_BASE}/api/patients/${editingId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -142,7 +147,7 @@ const AddPatient = () => {
           body: JSON.stringify(formData),
         });
       } else {
-        res = await fetch('/api/patients', {
+        res = await fetch(`${API_BASE}/api/patients`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

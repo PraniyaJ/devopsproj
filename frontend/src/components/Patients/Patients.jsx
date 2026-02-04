@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+// Use current host for backend (port 5000 in both local and EC2)
+const API_BASE = (typeof window !== 'undefined' && window.location.hostname)
+  ? `http://${window.location.hostname}:5000`
+  : 'http://localhost:5000';
+
 const Patients = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,7 +33,7 @@ const Patients = () => {
     if (!ok) return;
     try {
       const token = localStorage.getItem('authToken');
-      const res = await fetch(`/api/patients/${id}`, {
+      const res = await fetch(`${API_BASE}/api/patients/${id}`, {
         method: 'DELETE',
         headers: { Authorization: token ? `Bearer ${token}` : '' }
       });
@@ -56,7 +61,7 @@ const Patients = () => {
       setFetchError('');
       try {
         const token = localStorage.getItem('authToken');
-        const res = await fetch('/api/patients', {
+        const res = await fetch(`${API_BASE}/api/patients`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (!res.ok) throw new Error('Failed to load patients');
