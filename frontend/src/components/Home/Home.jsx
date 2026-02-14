@@ -17,7 +17,7 @@ const Home = () => {
             </p>
 
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-              Trusted, Compassionate Healthcare
+              Praneeth, Compassionate Healthcare
               {/* Efficient, Secure and Always Dedicated to Your Care */}
             </h1>
 
